@@ -59,8 +59,13 @@ define(function (require, exports) {
             document.layers.all.first().isBackground) {
             return descriptor.PlayObject(defaultObj);
         }
-        var layerSpec = document.layers.allSelected.toList(),
-            layerRef = layerSpec
+        var layerSpec = document.layers.allSelected.toList();
+
+        if (layerSpec.isEmpty()) {
+            return descriptor.PlayObject(defaultObj);
+        }
+
+        var layerRef = layerSpec
                 .map(function (layer) {
                     return layerLib.referenceBy.id(layer.id);
                 })
