@@ -395,8 +395,6 @@ define(function (require, exports) {
             var modalState = (event.state._value === "enter"),
                 modalPromise = this.flux.actions.tools.changeModalState(modalState);
 
-            this.flux.actions.ui.cloak();
-
             if (event.kind._value === "mouse") {
                 if (!modalState) {
                     // HACK - Delay is introduced here to make sure that bounds update
@@ -412,6 +410,8 @@ define(function (require, exports) {
 
                 // During artboard transforms, PS switches to artboard tool, so switch back to superselect
                 if (event.tool && event.tool.ID === "ArtT") {
+                    this.flux.actions.ui.cloak();
+
                     this.flux.actions.tools.resetSuperselect();
                 }
             }
