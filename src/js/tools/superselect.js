@@ -70,7 +70,7 @@ define(function (require, exports, module) {
             return descriptor.playObject(toolLib.setToolOptions("moveTool", toolOptions))
                 .then(function () {
                     UI.setPointerPropagationMode({
-                        defaultMode: UI.pointerPropagationMode.ALPHA_PROPAGATE_WITH_ADVISE
+                        defaultMode: UI.pointerPropagationMode.ALPHA_PROPAGATE_WITH_NOTIFY
                     });
                 });
         };
